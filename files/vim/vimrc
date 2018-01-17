@@ -44,13 +44,13 @@ let $LANG = 'en_US.UTF-8'
 " }}}
 
 " GUI {{{
-"colorscheme desert
+colorscheme desert
 "colorscheme solarized
 "colorscheme NeoSolarized
-colorscheme molokai
 
-if &term != 'screen'
+if ! (&term == 'screen' || &term == 'linux')
     set cursorline
+    colorscheme molokai
 endif
 set hlsearch
 set number
