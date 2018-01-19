@@ -22,19 +22,27 @@ error() {
 }
 
 check_os() {
-    OS=
-    OS_BIT=
-    CentOS_RHEL_version=
-    OS_BIT=$(getconf LONG_BIT)
-    if [[ -e /etc/redhat-release ]]; then
-        eval $(awk '{print "OS="$1"\nCentOS_RHEL_version="$4}' /etc/redhat-release)
-    else
-        check_os_unsupport
-    fi
-}
+    # 返回变量
+    #     $OS_BIT 系统位数
+    #     $OS 系统名称
+    #     $OS_VERSION 系统版本号
 
-check_os_unsupport() {
-    #TODO 收集相关文件信息
+    OS_BIT=$(getconf LONG_BIT)
+
+    # 获取 CentOS, RedHat 系统版本
+    if [[ -r /etc/redhat-release ]]; then
+        eval $(awk '/release/ {for(i=1;i<=NF;i++) if($i ~ /[0-9.]+/) {print "OS="$1"\nOS_VERSION="$i}}' /etc/redhat-release)
+        [[ "$OS" == "Red" ]] && OS="RedHat"
+        [[ -n "$OS" && -n "$OS_VERSION" ]] && return
+    fi
+
+    # 获取 Ubuntu 系统版本
+    if [[ -r /etc/lsb-release ]]; then
+        eval $(awk '/^DISTRIB_ID/ || /^DISTRIB_RELEASE/ {print}' /etc/lsb-release)
+        OS=$DISTRIB_ID; OS_VERSION=$DISTRIB_RELEASE
+        [[ -n "$OS" && -n "$OS_VERSION" ]] && return
+    fi
+    
     error "脚本暂时不支持该系统。"
 }
 
