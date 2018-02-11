@@ -42,7 +42,7 @@ check_os() {
         OS=$DISTRIB_ID; OS_VERSION=$DISTRIB_RELEASE
         [[ -n "$OS" && -n "$OS_VERSION" ]] && return
     fi
-    
+
     error "脚本暂时不支持该系统。"
 }
 
@@ -56,7 +56,7 @@ install() {
 
 centos_init() {
     # TODO
-    echo -e "$OS $CentOS_RHEL_version init script\n"
+    echo -e "$OS $OS_VERSION init script\n"
     # sudo
     sed -i '/%wheel.*NOPASSWD/s/^#\s//' /etc/sudoers
     # /etc/ssh/sshd_config
@@ -68,6 +68,6 @@ centos_init() {
 check_os
 debug var OS
 debug var OS_BIT
-debug var CentOS_RHEL_version
+debug var OS_VERSION
 
 install
