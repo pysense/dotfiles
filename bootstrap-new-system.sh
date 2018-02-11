@@ -60,7 +60,7 @@ centos_init() {
     # sudo
     sed -i '/%wheel.*NOPASSWD/s/^#\s//' /etc/sudoers
     # /etc/ssh/sshd_config
-    sed -i 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
+    sed -i 's/^#UseDNS.*/UseDNS no/' /etc/ssh/sshd_config
 }
 
 [ $(id -u) != "0" ] && error "脚本需用 root 帐号运行，或者使用 sudo 执行脚本。"
