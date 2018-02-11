@@ -4,4 +4,4 @@
 [push]
 	default = simple
 [http]
-	proxy = socks5://192.168.88.183:1080
+	proxy = socks5://192.168.88.35:1080
