@@ -50,7 +50,8 @@ colorscheme desert
 
 if ! (&term == 'screen' || &term == 'linux')
     set cursorline
-    colorscheme molokai
+    "colorscheme molokai
+    colorscheme desert
 endif
 set hlsearch
 set number
