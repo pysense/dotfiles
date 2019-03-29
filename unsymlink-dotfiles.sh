@@ -5,20 +5,6 @@ dotfiles=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 dotfiles_home=$dotfiles/home
 pushd $dotfiles > /dev/null
 
-link() {
-    from="$1"
-    to="$2"
-    if [[ -L $to ]]; then
-        echo "- remove symlink $to"
-        rm -f "$to"
-    elif [[ -f $to ]]; then
-        echo "- backup $to to $to.backup"
-        mv $to $to.backup
-    fi
-    echo "* Linking '$from' to '$to'"
-    ln -s "$from" "$to"
-}
-
 unlink() {
     from="$1"
     to="$2"
