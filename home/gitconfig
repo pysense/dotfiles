@@ -3,7 +3,5 @@
 	name = pysense
 [push]
 	default = simple
-[http]
-	proxy = socks5://proxy.ro.me:1080
 [color]
 	ui = true
