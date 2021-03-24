@@ -7,8 +7,10 @@
 ### dotfiles
 
 ```
-git clone https://github.com/pysense/dotfiles ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/pysense/dotfiles ~/dotfiles
+# 或者
+git clone git@github.com:pysense/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 
 # 软链接配置文件
 bash symlink-dotfiles.sh
