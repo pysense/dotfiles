@@ -1,18 +1,31 @@
 # .bashrc
 
 # User specific aliases and functions
+LANG=zh_CN.UTF-8
 
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias vi=vim
+alias vi='vim $*'
 alias gst='git status'
-alias glog='git log --oneline --decorate --graph'
+alias glog='git log --oneline --graph -n10 $*'
+alias gl='git log --oneline --all --graph --decorate $*'
 alias ..='cd ..'
+alias yi='yum install -y $*'
+alias ys='yum search $*'
+alias yp='yum provides $*'
 
 export EDITOR=vim
-export PS1='\[\e[1;32m\]\u@\h\[\e[0;33m\] \w \[\e[1;34m\]\$\[\e[0m\] '
+
+# PS1
+user_hostname='\[\e[1;32m\]\u@\h'
+pwd='\[\e[0;33m\]\w'
+time='\[\e[0m[\D{%H:%M:%S}]'
+command_number='\[\e[36m#\#'
+prompt='\[\e[1;$((31+3*!$?))m\]\$ \[\e[0m\]'
+#export PS1='\[\e[1;32m\]\u@\h\[\e[0;33m\] \w \[\e[1;34m\]\$\[\e[0m\] '
 #export PS1='\[\e]0;\h:\w\a\]\n\[\e[1;32m\]\u@\h\[\e[0;33m\] \w \[\e[0m[\D{%H:%M:%S}]\n\[\e[1;$((31+3*!$?))m\]\$\[\e[0m\] '
+export PS1="$user_hostname $pwd $command_number $time \n$prompt"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
