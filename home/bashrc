@@ -6,14 +6,17 @@ LANG=zh_CN.UTF-8
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias vi='vim $*'
+alias vi='vim'
+alias g='git'
 alias gst='git status'
-alias glog='git log --oneline --graph -n10 $*'
-alias gl='git log --oneline --all --graph --decorate $*'
+alias glog='git log --oneline --graph -n10'
+alias gl='git log --oneline --all --graph --decorate'
 alias ..='cd ..'
-alias yi='yum install -y $*'
-alias ys='yum search $*'
-alias yp='yum provides $*'
+alias yi='yum install -y'
+alias ys='yum search'
+alias yp='yum provides'
+alias man='man -L en_US.UTF-8'
+alias cman='man -L zh_CN.UTF-8'
 
 export EDITOR=vim
 
