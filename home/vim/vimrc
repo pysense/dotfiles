@@ -54,10 +54,13 @@ if ! (&term == 'screen' || &term == 'linux')
     colorscheme desert
 endif
 set hlsearch
-set number
+"set number
+set relativenumber
 " 分割出来的窗口位于当前窗口下边/右边
 set splitbelow
 set splitright
+" 移动光标时，光标上下保留显示的行数
+set scrolloff=7
 
 " set nolist
 set listchars=trail:.,extends:>,precedes:<
@@ -84,7 +87,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set foldmethod=indent
+"set foldmethod=indent
 syntax on
 " }}}
 
