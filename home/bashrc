@@ -1,4 +1,5 @@
 # .bashrc
+umask 027
 
 # User specific aliases and functions
 LANG=zh_CN.UTF-8
